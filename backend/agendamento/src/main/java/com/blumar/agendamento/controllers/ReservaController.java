@@ -40,11 +40,12 @@ public class ReservaController {
             //return ResponseEntity.ok(notaFiscal);
             return Optional.of(notaFiscal)
                     .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
+                    .orElse(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build());
 
         } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            //e.printStackTrace();
+            System.out.println(e);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
     }
 }

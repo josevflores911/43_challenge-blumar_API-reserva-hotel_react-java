@@ -11,6 +11,7 @@ import java.util.UUID;
 @Entity(name = "Quarto")
 @Table(name = "quarto")
 @Data
+@NoArgsConstructor
 public class Quarto implements Serializable {
     private static final long serialVersionUID = 8063180201812979106L;
     @Id

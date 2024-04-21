@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Entity(name = "Reserva")
 @Table(name = "reserva")
 @Data
+@NoArgsConstructor
 public class Reserva implements Serializable {
     private static final long serialVersionUID = 8063180201812979106L;
     @Id

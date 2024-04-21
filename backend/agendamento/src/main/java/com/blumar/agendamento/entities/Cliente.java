@@ -4,6 +4,7 @@ package com.blumar.agendamento.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.util.UUID;
 @Entity(name = "Cliente")
 @Table(name = "cliente")
 @Getter
+@NoArgsConstructor
 //@JsonIgnoreProperties({ "reservas", "others" })
 public class Cliente  implements Serializable {
     private static final long serialVersionUID = 8063180201812979106L;

@@ -4,6 +4,8 @@ package com.blumar.agendamento.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -11,6 +13,7 @@ import java.util.*;
 @Entity(name = "Pedido")
 @Table(name = "pedido")
 @Data
+@NoArgsConstructor
 public class Pedido implements Serializable {
     private static final long serialVersionUID = 8063180201812979106L;
 

@@ -2,7 +2,11 @@ package com.blumar.agendamento.entities;
 
 import com.blumar.agendamento.entities.enums.RoomType;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class ReservaDTO {
 
@@ -15,11 +19,11 @@ public class ReservaDTO {
     public String nomeAcompanhante="";
     public long cpfAcompanhante=0;
     public int idadeAcompanhante=0;
-    public RoomType tipoQUarto;
+    public RoomType tipoQuarto;
     public LocalDateTime entrada=LocalDateTime.now();
     public LocalDateTime salida;
 
-    public ReservaDTO(String nome, long cpf, int idade, boolean temAcompanhante, String nomeAcompanhante, long cpfAcompanhante, int idadeAcompanhante, RoomType tipoQUarto, LocalDateTime entrada, LocalDateTime salida) {
+    public ReservaDTO(String nome, long cpf, int idade, boolean temAcompanhante, String nomeAcompanhante, long cpfAcompanhante, int idadeAcompanhante, RoomType tipoQuarto, String salida) throws ParseException {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
@@ -27,8 +31,11 @@ public class ReservaDTO {
         this.nomeAcompanhante = nomeAcompanhante;
         this.cpfAcompanhante = cpfAcompanhante;
         this.idadeAcompanhante = idadeAcompanhante;
-        this.tipoQUarto = tipoQUarto;
+        this.tipoQuarto = tipoQuarto;
 
-        this.salida = salida;
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        Date parsedDate = formatter.parse(salida);
+
+        this.salida = parsedDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
     }
 }

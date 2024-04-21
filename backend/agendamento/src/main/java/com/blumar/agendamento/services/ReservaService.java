@@ -38,14 +38,14 @@ public class ReservaService {
 
     public Optional<NotaFiscal> createReserva(ReservaDTO reservaDTO) throws Exception {
 
-        List<Quarto> quartosDisponivel=quartoRepository.findByTypeAndDisponivel(reservaDTO.tipoQUarto,true).stream()
+        NotaFiscal notafiscal;
+        Optional<NotaFiscal> nota;
+
+        List<Quarto> quartosDisponivel=quartoRepository.findByTypeAndDisponivel(reservaDTO.tipoQuarto,true)
+                .stream()
                 .filter(e->e.getHotel().getCnpj()==reservaDTO.cnpjHotel).toList();
 
         Hotel hotel = hotelRepository.findByCnpj(reservaDTO.cnpjHotel).orElseThrow(()->new Exception("Hotel not found"));
-
-        NotaFiscal notafiscal= null;
-
-        Optional<NotaFiscal> nota= Optional.empty();
 
         if(!quartosDisponivel.isEmpty()){
             Quarto quartoAleatorio =quartosDisponivel.stream().findAny().get();
@@ -55,9 +55,9 @@ public class ReservaService {
 
             Duration duracao = Duration.between(reservaDTO.entrada, reservaDTO.salida);
             int noites =(int)duracao.toDays();
-//            if (duracao.toHours() % 24 != 0) {
-//                noites++;
-//            }
+            if (duracao.toHours() % 24 != 0) {
+                noites++;
+            }
 
             Reserva reserva=new Reserva(noites,quartoAleatorio,pedido,cliente);
 
@@ -66,11 +66,11 @@ public class ReservaService {
             reservaRepository.save(reserva);
 
             notafiscal= new NotaFiscal(cliente,hotel,quartoAleatorio,reserva);
-            nota =Optional.ofNullable(notafiscal);
+            nota =Optional.of(notafiscal);
         }else{
             throw new Exception("Quarto no disponivel ");
         }
 
-        return nota;
+        return  nota;
     }
 }
