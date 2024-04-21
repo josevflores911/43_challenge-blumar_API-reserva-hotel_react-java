@@ -27,11 +27,11 @@ public class ClienteController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<?> addUser(@RequestBody final Object cliente) throws Exception {
+    public ResponseEntity<Cliente> addCliente(@RequestBody final Object cliente) throws Exception {
         try {
             clienteService.addCliente(cliente);
 
-            return ResponseEntity.ok(cliente);
+            return ResponseEntity.ok((Cliente) cliente);
 //            return Optional.of(user)
 //                    .map(ResponseEntity::ok)
 //                    .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());

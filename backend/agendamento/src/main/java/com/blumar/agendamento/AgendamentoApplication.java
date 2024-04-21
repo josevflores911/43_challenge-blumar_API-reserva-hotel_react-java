@@ -29,7 +29,11 @@ public class AgendamentoApplication implements CommandLineRunner {
 	private ReservaService reservaService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(AgendamentoApplication.class, args);
+
+		//SpringApplication.run(AgendamentoApplication.class, args);
+		SpringApplication app = new SpringApplication(AgendamentoApplication.class);
+		app.setAdditionalProfiles("dev");
+		app.run(args);
 	}
 
 	@Override
@@ -42,6 +46,7 @@ public class AgendamentoApplication implements CommandLineRunner {
 
 		Quarto room1A = createAndSaveQuarto(RoomType.INDIVIDUAL, 101, hotel1);
 		Quarto room2A = createAndSaveQuarto(RoomType.FAMILIAR, 102, hotel1);
+		Quarto room3A = createAndSaveQuarto(RoomType.CASAL, 103, hotel1);
 
 
 		Quarto room1B = createAndSaveQuarto(RoomType.PRESIDENCIAL, 201, hotel2);
