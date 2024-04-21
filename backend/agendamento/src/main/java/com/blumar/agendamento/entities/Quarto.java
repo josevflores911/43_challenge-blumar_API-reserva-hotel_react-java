@@ -3,7 +3,7 @@ package com.blumar.agendamento.entities;
 import com.blumar.agendamento.entities.enums.RoomType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.UUID;
@@ -26,9 +26,20 @@ public class Quarto implements Serializable {
     private int numero;
 
 
+    private boolean disponivel=true;
+
+
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_hotel")
     private Hotel hotel;
+
+    public Quarto(RoomType type, int number, Hotel hotel) {
+        this.type=type;
+        this.numero=number;
+        this.hotel=hotel;
+
+    }
+
 }
 

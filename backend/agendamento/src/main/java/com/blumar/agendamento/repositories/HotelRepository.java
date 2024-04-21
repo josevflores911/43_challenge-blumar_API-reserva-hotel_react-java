@@ -3,7 +3,9 @@ package com.blumar.agendamento.repositories;
 import com.blumar.agendamento.entities.Hotel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public interface HotelRepository extends JpaRepository<Hotel, UUID> {
+    Optional<Hotel> findByCnpj(int cnpj);
 }

@@ -35,66 +35,48 @@ public class AgendamentoApplication implements CommandLineRunner {
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {
-		// Create and save Hotel instances
-		Hotel hotel1 = createAndSaveHotel("Hotel A", "City X", 123456789, 987654321);
-		Hotel hotel2 = createAndSaveHotel("Hotel B", "City Y", 987654321, 123456789);
 
-		// Create and save rooms for Hotel A
+		Hotel hotel1 = createAndSaveHotel("Hotel A", "City X", 123456789, 987654321L);
+		Hotel hotel2 = createAndSaveHotel("Hotel B", "City Y", 987654321, 123456789L);
+
+
 		Quarto room1A = createAndSaveQuarto(RoomType.INDIVIDUAL, 101, hotel1);
 		Quarto room2A = createAndSaveQuarto(RoomType.FAMILIAR, 102, hotel1);
 
-		// Create and save rooms for Hotel B
+
 		Quarto room1B = createAndSaveQuarto(RoomType.PRESIDENCIAL, 201, hotel2);
 		Quarto room2B = createAndSaveQuarto(RoomType.CASAL, 202, hotel2);
 
-		Cliente cliente1 = new Cliente();
-		cliente1.setNome("John Doe");
-		cliente1.setIdade(30);
-		cliente1.setCpf(123456789);
-		cliente1.setTemAcompanhante(false); // No accompanying person for this client
+
+		Cliente cliente1 = new Cliente("John Doe",3012122123L,30,false,"",0,0);
+
+		Cliente cliente2 = new Cliente("Alice Smith",456789123L,25,
+			true,"Bob Smith",789123456L,30);
+
+		Cliente cliente = new Cliente("John Doe",3012122123L,30,false,"",0,0);
+
 		clienteService.saveCliente(cliente1);
-
-		// Create and save the second client with an accompanying person
-		Cliente cliente2 = new Cliente();
-		cliente2.setNome("Alice Smith");
-		cliente2.setIdade(25);
-		cliente2.setCpf(456789123);
-		cliente2.setTemAcompanhante(true); // This client has an accompanying person
-		cliente2.setNomeAcompanhante("Bob Smith");
-		cliente2.setIdadeAcompanhante(30);
-		cliente2.setCpfAcompanhante(789123456);
-		clienteService.saveCliente(cliente2);
+		clienteService.saveCliente( cliente2);
+		clienteService.saveCliente( cliente);
 
 
 
-		// Assuming you have a ClienteService that provides CRUD operations for Cliente entities
-		Cliente cliente = new Cliente();
-		cliente.setNome("John Doe");
-		cliente.setIdade(30);
-		cliente.setCpf(123456789);
-		cliente.setTemAcompanhante(false); // No accompanying person for this client
-		clienteService.saveCliente(cliente); // Save the new Cliente
-
-		Pedido pedido = new Pedido();
-		pedido.setValorTotal(100);
-		pedido.setCliente(cliente);
+		Pedido pedido = new Pedido(cliente);
 
 		pedidoService.savePedido(pedido);
 
-		Reserva reservaA =new Reserva();
-		reservaA.setDataSaida(LocalDateTime.now().plusDays(3));
-		reservaA.setValorUnitario(150);
-		reservaA.setCantidadNoites(3);
+		Reserva reservaA =new Reserva(3,room1A,pedido,cliente);
 
-		reservaA.setQuarto(room2A);
-		reservaA.setPedido(pedido);
-		reservaA.setCliente(cliente);
+		Reserva reservaB =new Reserva(3,room1B,pedido,cliente);
+
 
 		reservaService.saveReserva(reservaA);
+		reservaService.saveReserva(reservaB);
+
 
 	}
 
-	private Hotel createAndSaveHotel(String name, String location, int cnpj, int contact) {
+	private Hotel createAndSaveHotel(String name, String location, int cnpj, Long contact) {
 		Hotel hotel = new Hotel();
 		hotel.setName(name);
 		hotel.setUbicacion(location);
@@ -105,10 +87,8 @@ public class AgendamentoApplication implements CommandLineRunner {
 	}
 
 	private Quarto createAndSaveQuarto(RoomType type, int number, Hotel hotel) {
-		Quarto room = new Quarto();
-		room.setType(type);
-		room.setNumero(number);
-		room.setHotel(hotel);
+		Quarto room = new Quarto(type,number,hotel);
+		hotel.addRoom(room);
 		quartoService.saveQuarto(room); // Save room
 		return room;
 	}
