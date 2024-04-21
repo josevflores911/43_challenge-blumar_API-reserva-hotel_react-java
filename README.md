@@ -1,5 +1,62 @@
 # 43_challenge-blumar_API-reserva-hotel_react-java
-servico REST java-spring para realizar o check-in dos clientes en um hotel
+# Desafio Back-end Java - Serviço de Check-in em Hotel
+
+Este repositório contém um serviço REST em Java implementado com Spring para realizar o check-in (entrada) dos clientes em um hotel específico, seguindo as regras de negócio definidas.
+
+## Funcionalidades
+
+O serviço oferece as seguintes funcionalidades:
+
+- Receber o nome do cliente responsável pela reserva, o tipo de quarto desejado e a data final da reserva.
+- Assumir que a data inicial da reserva é a data atual da requisição.
+- Validar a disponibilidade de quartos para permitir ou não a hospedagem.
+- Confirmar a reserva retornando informações para o recibo do cliente, incluindo:
+  - Número da reserva
+  - Nome do cliente
+  - Número do quarto
+  - Tipo de quarto escolhido
+  - Data de check-in (entrada)
+  - Data de check-out (saída)
+  - Número de noites da hospedagem
+  - Valor total da reserva
+
+## Regras de Negócio
+
+O hotel possui a seguinte política de preços:
+
+- Diária do quarto para hospedagem individual:
+  - Segunda a quinta-feira: R$100
+  - Sexta a domingo: R$120
+
+- Diária do quarto para hospedagem com acompanhante:
+  - Segunda a quinta-feira: R$130
+  - Sexta a domingo: R$150
+
+- Diária do quarto para hospedagem com criança:
+  - Segunda a quinta-feira: R$160
+  - Sexta a domingo: R$180
+
+## Execução do Projeto
+
+### Clonar o Repositório:
+
+```bash
+git clone https://github.com/seu-usuario/desafio-back-end-java.git
+```
+Importar o Projeto no IntelliJ IDEA (ou IDE de preferência):
+Abra o IntelliJ IDEA e selecione "File" > "Open".
+Navegue até o diretório clonado e selecione a pasta do projeto.
+Executar o Projeto:
+Localize e execute a classe principal DesafioBackEndJavaApplication.java.
+O serviço estará disponível em http://localhost:8080.
+Estrutura do Projeto
+A estrutura do projeto está organizada da seguinte maneira:
+
+src/main/java: Contém os arquivos-fonte do projeto Java.
+src/main/resources: Contém os recursos configuracionais, como arquivos application.properties.
+
+
+<h3>end points</h3>
 
 ### GET /clientes/all
 
