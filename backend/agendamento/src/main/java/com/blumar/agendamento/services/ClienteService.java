@@ -25,9 +25,8 @@ public class ClienteService {
 
     public List<Cliente> findAll(){return   clienteRepository.findAll(); }
 
-    public void addCliente(Object cliente) {
-    }
+    public Cliente findByCpf(long cpf){return   clienteRepository.findByCpf(cpf); }
 
-    public void updateCliente(Long cpf, Object cliente) {
+    public void updateCliente(Long cpf, Cliente cliente) {
     }
 }

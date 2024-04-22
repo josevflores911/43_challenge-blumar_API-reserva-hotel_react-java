@@ -1,7 +1,7 @@
 package com.blumar.agendamento.controllers;
 
 import com.blumar.agendamento.entities.Cliente;
-import com.blumar.agendamento.entities.NotaFiscal;
+import com.blumar.agendamento.entities.NotaFiscalDTO;
 import com.blumar.agendamento.entities.Reserva;
 import com.blumar.agendamento.entities.ReservaDTO;
 import com.blumar.agendamento.services.ClienteService;
@@ -12,7 +12,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,8 +23,11 @@ public class ReservaController {
     @Autowired
     private ReservaService reservaService;
 
+    @Autowired
+    private ClienteService clienteService;
+
     @GetMapping("/all")
-    public ResponseEntity<?> getAllReservas() {
+    public ResponseEntity<List<Reserva>> getAllReservas() {
         List<Reserva> l =reservaService.findAll();
 
         return ResponseEntity.ok(l);
@@ -33,7 +35,7 @@ public class ReservaController {
 
     @PostMapping
     @Transactional
-    public ResponseEntity<Optional<NotaFiscal>> addReserve(@RequestBody final ReservaDTO reservaDTO) throws Exception {
+    public ResponseEntity<Optional<NotaFiscalDTO>> addReserve(@RequestBody final ReservaDTO reservaDTO) throws Exception {
         try {
             var notaFiscal= reservaService.createReserva(reservaDTO);
 
@@ -47,5 +49,14 @@ public class ReservaController {
             System.out.println(e);
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
+    }
+
+    @GetMapping("/cliente/{cpf}")
+    public ResponseEntity<List<Reserva>> reservasByCliente(@PathVariable Long cpf) {
+        Cliente cliente=clienteService.findByCpf(cpf);
+
+        List<Reserva> l =reservaService.findReservas(cliente);
+
+        return ResponseEntity.ok(l);
     }
 }

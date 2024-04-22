@@ -146,3 +146,6 @@ Hibernate: insert into cliente (cpf_acompanhante,idade_acompanhante,nome_acompan
 Hibernate: insert into cliente (cpf_acompanhante,idade_acompanhante,nome_acompanhante,tem_acompanhante,id_cliente) values (?,?,?,?,?)
 Hibernate: insert into pedido (id_cliente,entrada,valor_total,id_pedido) values (?,?,?,?)
 Hibernate: insert into reserva (cantidad_noites,id_cliente,data_entrada,data_saida,id_pedido,id_quarto,valor_unitario,id_reserva) values (?,?,?,?,?,?,?,?)
+
+
+[Desafio Back-end Java - Repositório](https://github.com/josevflores911/43_challenge-blumar_API-reserva-hotel_react-java/tree/master)

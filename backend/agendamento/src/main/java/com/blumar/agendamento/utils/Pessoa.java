@@ -1,4 +1,4 @@
-package com.blumar.agendamento.revisar;
+package com.blumar.agendamento.utils;
 
 import jakarta.persistence.*;
 import lombok.Data;

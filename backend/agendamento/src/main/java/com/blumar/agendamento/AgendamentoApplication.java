@@ -39,7 +39,10 @@ public class AgendamentoApplication implements CommandLineRunner {
 	@Override
 	@Transactional
 	public void run(String... args) throws Exception {
+		inicializaDB();
+	}
 
+	private void inicializaDB() throws Exception {
 		Hotel hotel1 = createAndSaveHotel("Hotel A", "City X", 123456789, 987654321L);
 		Hotel hotel2 = createAndSaveHotel("Hotel B", "City Y", 987654321, 123456789L);
 
@@ -65,7 +68,6 @@ public class AgendamentoApplication implements CommandLineRunner {
 		clienteService.saveCliente( cliente);
 
 
-
 		Pedido pedido = new Pedido(cliente);
 
 		pedidoService.savePedido(pedido);
@@ -77,20 +79,16 @@ public class AgendamentoApplication implements CommandLineRunner {
 
 		reservaService.saveReserva(reservaA);
 		reservaService.saveReserva(reservaB);
-
-
 	}
-
 	private Hotel createAndSaveHotel(String name, String location, int cnpj, Long contact) {
 		Hotel hotel = new Hotel();
-		hotel.setName(name);
-		hotel.setUbicacion(location);
+		hotel.setNome(name);
+		hotel.setUbicacao(location);
 		hotel.setCnpj(cnpj);
-		hotel.setContacto(contact);
+		hotel.setContato(contact);
 		hotel = hotelService.saveHotel(hotel); // Save hotel and get managed entity
 		return hotel;
 	}
-
 	private Quarto createAndSaveQuarto(RoomType type, int number, Hotel hotel) {
 		Quarto room = new Quarto(type,number,hotel);
 		hotel.addRoom(room);

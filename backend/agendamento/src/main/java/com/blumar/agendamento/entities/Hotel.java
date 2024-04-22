@@ -22,9 +22,9 @@ public class Hotel implements Serializable {
     @Column(name = "id_hotel")
     private UUID idHotel;
     private int cnpj;
-    private String name;
-    private String ubicacion;
-    private long contacto;
+    private String nome;
+    private String ubicacao;
+    private long contato;
 
     @JsonIgnore
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -39,9 +39,9 @@ public class Hotel implements Serializable {
         return "Hotel{" +
                 "idHotel=" + idHotel +
                 ", cnpj=" + cnpj +
-                ", name='" + name + '\'' +
-                ", ubicacion='" + ubicacion + '\'' +
-                ", contacto=" + contacto +
+                ", name='" + nome + '\'' +
+                ", ubicacion='" + ubicacao + '\'' +
+                ", contacto=" + contato +
                 '}';
     }
 }

@@ -5,15 +5,12 @@ package com.blumar.agendamento.services;
 import com.blumar.agendamento.entities.*;
 import com.blumar.agendamento.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.util.Optionals;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 public class ReservaService {
@@ -36,10 +33,10 @@ public class ReservaService {
 
     public List<Reserva> findAll(){return   reservaRepository.findAll(); }
 
-    public Optional<NotaFiscal> createReserva(ReservaDTO reservaDTO) throws Exception {
+    public Optional<NotaFiscalDTO> createReserva(ReservaDTO reservaDTO) throws Exception {
 
-        NotaFiscal notafiscal;
-        Optional<NotaFiscal> nota;
+        NotaFiscalDTO notafiscal;
+        Optional<NotaFiscalDTO> nota;
 
         List<Quarto> quartosDisponivel=quartoRepository.findByTypeAndDisponivel(reservaDTO.tipoQuarto,true)
                 .stream()
@@ -65,12 +62,16 @@ public class ReservaService {
             pedidoRepository.save(pedido);
             reservaRepository.save(reserva);
 
-            notafiscal= new NotaFiscal(cliente,hotel,quartoAleatorio,reserva);
+            notafiscal= new NotaFiscalDTO(cliente,hotel,quartoAleatorio,reserva);
             nota =Optional.of(notafiscal);
         }else{
             throw new Exception("Quarto no disponivel ");
         }
 
         return  nota;
+    }
+
+    public List<Reserva> findReservas(Cliente cliente){
+        return reservaRepository.findByCliente(cliente);
     }
 }
