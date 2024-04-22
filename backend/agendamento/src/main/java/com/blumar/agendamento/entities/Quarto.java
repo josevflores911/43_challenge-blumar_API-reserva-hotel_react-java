@@ -39,7 +39,6 @@ public class Quarto implements Serializable {
         this.type=type;
         this.numero=number;
         this.hotel=hotel;
-
     }
 
 }

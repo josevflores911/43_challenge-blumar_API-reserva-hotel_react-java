@@ -19,8 +19,8 @@ public class ClienteService {
     private ClienteRepository clienteRepository;
 
     @Transactional
-    public Cliente saveCliente(Cliente cliente) {
-        return clienteRepository.save(cliente);
+    public void saveCliente(Cliente cliente) {
+        clienteRepository.save(cliente);
     }
 
     public List<Cliente> findAll(){return   clienteRepository.findAll(); }
