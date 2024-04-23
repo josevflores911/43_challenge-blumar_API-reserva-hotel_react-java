@@ -43,11 +43,23 @@ public class ClienteController {
         }
     }
 
-    @GetMapping("/{cpf}")
+    @PutMapping("/{cpf}")
     @Transactional
     public ResponseEntity<Cliente> updateCliente(@PathVariable Long cpf, @RequestBody Cliente cliente) throws Exception {
         clienteService.updateCliente(cpf, cliente);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/{cpf}")
+    @Transactional
+    public ResponseEntity<Cliente> findClienteByCPF(@PathVariable Long cpf) throws Exception {
+        Cliente cliente =clienteService.findByCpf(cpf);
+        if(cliente!=null){
+            return ResponseEntity.ok(cliente);
+
+        }else{
+            return ResponseEntity.notFound().build();
+        }
     }
 
 
