@@ -2,9 +2,17 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Route, Routes ,Link } from "react-router-dom";
+import Header from './components/Header'
+import Formulario from './pages/FormularioReserva'
+import Hoteles from './pages/Hoteles'
+
+import routesConfig from './environment/paths'
+
+import { SLIDES } from './slides'
 
 function App() {
-  const [count, setCount] = useState(0)
+ 
 
   return (
     <>
@@ -17,17 +25,22 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <Header></Header>
+
+      
+
+       <div>
+          <Routes>
+            {routesConfig.map(({ path, element }, index) => (
+              <Route key={index} path={path} element={element} />
+            ))}
+        </Routes>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      
+
+      {/* {<Formulario></Formulario>} */}
+      {/* {<Hoteles slides={SLIDES}></Hoteles>} */}
+     
     </>
   )
 }
