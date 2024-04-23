@@ -29,7 +29,7 @@ public class AgendamentoApplication implements CommandLineRunner {
 
 		//SpringApplication.run(AgendamentoApplication.class, args);
 		SpringApplication app = new SpringApplication(AgendamentoApplication.class);
-		app.setAdditionalProfiles("dev");
+		app.setAdditionalProfiles("prod");
 		app.run(args);
 	}
 
