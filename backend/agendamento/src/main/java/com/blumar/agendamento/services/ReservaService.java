@@ -71,7 +71,11 @@ public class ReservaService {
         return  nota;
     }
 
-    public List<Reserva> findReservas(Cliente cliente){
+    public List<Reserva> findReservasByClient(Cliente cliente){
         return reservaRepository.findByCliente(cliente);
+    }
+
+    public List<Reserva> findReservasByClientCPF(long cpf){
+        return reservaRepository.findByClienteCpf(cpf);
     }
 }

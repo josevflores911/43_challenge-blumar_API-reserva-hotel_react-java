@@ -12,8 +12,8 @@ const Header = ({ handleButtonClick }) => {
 
   return (
     <div className="header" style={{display:"flex",justifyContent:'space-between',marginBottom:'20px'}}>
-      <Link to="/about" onClick={() => handleTabChange("recibo")}>
-        <button onClick={(e) => e.preventDefault()}>Recibo</button>
+      <Link to="/about" onClick={() => handleTabChange("reserva")}>
+        <button onClick={(e) => e.preventDefault()}>Reserva</button>
       </Link>
       
       <Link to="/about" onClick={() => handleTabChange("cliente")}>

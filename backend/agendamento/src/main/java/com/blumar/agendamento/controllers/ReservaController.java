@@ -52,10 +52,10 @@ public class ReservaController {
     }
 
     @GetMapping("/cliente/{cpf}")
-    public ResponseEntity<List<Reserva>> reservasByCliente(@PathVariable Long cpf) {
-        Cliente cliente=clienteService.findByCpf(cpf);
+    public ResponseEntity<List<Reserva>> reservasByClienteCPF(@PathVariable Long cpf) {
+        //Cliente cliente=clienteService.findByCpf(cpf);
 
-        List<Reserva> l =reservaService.findReservas(cliente);
+        List<Reserva> l =reservaService.findReservasByClientCPF(cpf);
 
         return ResponseEntity.ok(l);
     }

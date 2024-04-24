@@ -58,7 +58,7 @@ public class AgendamentoApplication implements CommandLineRunner {
 		Cliente cliente2 = new Cliente("Alice Smith",456789123L,25,
 			true,"Bob Smith",789123456L,30);
 
-		Cliente cliente = new Cliente("John Doe",3012122123L,30,false,"",0,0);
+		Cliente cliente = new Cliente("John Doe",4012122123L,30,false,"",0,0);
 
 		clienteService.saveCliente(cliente1);
 		clienteService.saveCliente( cliente2);

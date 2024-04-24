@@ -1,14 +1,9 @@
+import { RoomType } from "./roomEnum";
 
-const RoomType = {
-    INDIVIDUAL: 'INDIVIDUAL',
-    FAMILIAR: 'FAMILIAR',
-    CASAL: 'CASAL',
-    PRESIDENCIAL: 'PRESIDENCIAL'
-  };
 
 export class FormState {
     constructor() {
-      this.cnpjHotel = '';
+      this.cnpjHotel = '123456789';
       this.nome = '';
       this.cpf = '';
       this.idade = '';

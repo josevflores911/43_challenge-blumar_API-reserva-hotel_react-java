@@ -9,6 +9,8 @@ import Hoteles from './pages/Hoteles'
 
 import routesConfig from './environment/paths'
 
+
+
 import { SLIDES } from './slides'
 
 function App() {

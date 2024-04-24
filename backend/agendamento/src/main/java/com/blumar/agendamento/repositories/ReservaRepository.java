@@ -12,6 +12,8 @@ import java.util.UUID;
 public interface ReservaRepository extends JpaRepository<Reserva, UUID> {
     List<Reserva> findByCliente(Cliente cliente);
 
+    List<Reserva> findByClienteCpf(long cpf);
+
 //    @Query("SELECT r FROM Reserva r WHERE r.cliente = :cliente")
 //    List<Reserva> findReservasByCliente(@Param("cliente") Cliente cliente);
 
