@@ -7,8 +7,10 @@
 }
 
 body{
-  background-color:lightblue;
+  background-color:rgba(0, 0, 0, 0.6) ;
+  ;
 }
+
 .logo {
   height: 6em;
   padding: 1.5em;

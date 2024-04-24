@@ -35,12 +35,12 @@ const ReservationForm = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          background: "rgba(7, 6, 7, 0.3)",
+          background: "gray",
           margin: "10px",
           padding: "30px 20px",
           alignItems: "flex-end",
           width: "600px",
-          height: "400px",
+         
         }}
       >
         <label>
@@ -51,6 +51,7 @@ const ReservationForm = () => {
             value={formData.cnpjHotel}
             onChange={handleChange}
             disabled
+            className="m-3"
           />
         </label>
 
@@ -61,6 +62,7 @@ const ReservationForm = () => {
             name="nome"
             value={formData.nome}
             onChange={handleChange}
+            className="m-3"
           />
         </label>
 
@@ -71,6 +73,7 @@ const ReservationForm = () => {
             name="cpf"
             value={formData.cpf}
             onChange={handleChange}
+            className="m-3"
           />
         </label>
 
@@ -81,6 +84,7 @@ const ReservationForm = () => {
             name="idade"
             value={formData.idade}
             onChange={handleChange}
+            className="m-3"
           />
         </label>
 
@@ -91,6 +95,7 @@ const ReservationForm = () => {
             name="temAcompanhante"
             checked={formData.temAcompanhante}
             onChange={handleChange}
+            className="m-3"
           />
         </label>
 
@@ -103,6 +108,7 @@ const ReservationForm = () => {
                 name="nomeAcompanhante"
                 value={formData.nomeAcompanhante}
                 onChange={handleChange}
+                className="m-3"
               />
             </label>
 
@@ -113,6 +119,7 @@ const ReservationForm = () => {
                 name="cpfAcompanhante"
                 value={formData.cpfAcompanhante}
                 onChange={handleChange}
+                className="m-3"
               />
             </label>
 
@@ -123,6 +130,7 @@ const ReservationForm = () => {
                 name="idadeAcompanhante"
                 value={formData.idadeAcompanhante}
                 onChange={handleChange}
+                className="m-3"
               />
             </label>
           </>
@@ -134,6 +142,7 @@ const ReservationForm = () => {
             name="tipoQuarto"
             value={formData.tipoQuarto}
             onChange={handleChange}
+            className="m-3"
           >
             {Object.values(RoomType).map((type) => (
               <option key={type} value={type}>
@@ -150,6 +159,7 @@ const ReservationForm = () => {
             name="salida"
             value={formData.salida}
             onChange={handleChange}
+            className="m-3"
           />
         </label>
 
@@ -162,5 +172,3 @@ const ReservationForm = () => {
 export default ReservationForm;
 
 
-// if you are using CRA (create react app), use process.env.
-// if you are using ViteJS, use import.meta.env.

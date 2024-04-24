@@ -1,12 +1,12 @@
 import React from "react";
 
 import { useNavigate, Link } from "react-router-dom";
-//useNavigate  useHistory
-const Header = ({ handleButtonClick }) => {
+
+const Header = () => {
+
   const navigateTo = useNavigate();
 
   const handleTabChange = (route) => {
-   
     navigateTo(route);
   };
 
@@ -15,11 +15,9 @@ const Header = ({ handleButtonClick }) => {
       <Link to="/about" onClick={() => handleTabChange("reserva")}>
         <button onClick={(e) => e.preventDefault()}>Reserva</button>
       </Link>
-      
       <Link to="/about" onClick={() => handleTabChange("cliente")}>
         <button onClick={(e) => e.preventDefault()}>Clientes</button>
       </Link>
-
       <Link to="/about" onClick={() => handleTabChange("hoteles")}>
         <button onClick={(e) => e.preventDefault()}>Hoteles</button>
       </Link>
@@ -31,3 +29,4 @@ const Header = ({ handleButtonClick }) => {
 };
 
 export default Header;
+

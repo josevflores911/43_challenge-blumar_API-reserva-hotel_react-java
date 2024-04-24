@@ -1,36 +1,16 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import { Route, Routes ,Link } from "react-router-dom";
+import { Route, Routes  } from "react-router-dom";
 import Header from './components/Header'
-import Formulario from './pages/FormularioReserva'
-import Hoteles from './pages/Hoteles'
 
 import routesConfig from './environment/paths'
+import Subheader from './components/Subheader';
 
-
-
-import { SLIDES } from './slides'
 
 function App() {
- 
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
+      <Subheader/>
       <Header></Header>
-
-      
-
        <div>
           <Routes>
             {routesConfig.map(({ path, element }, index) => (
@@ -38,13 +18,19 @@ function App() {
             ))}
         </Routes>
       </div>
-      
-
-      {/* {<Formulario></Formulario>} */}
-      {/* {<Hoteles slides={SLIDES}></Hoteles>} */}
-     
     </>
   )
 }
 
 export default App
+
+
+// npm install -D tailwindcss postcss autoprefixer
+// npx tailwindcss init -p
+
+// if you are using CRA (create react app), use process.env.
+// if you are using ViteJS, use import.meta.env.
+
+//useNavigate ->  useHistory
+//Link -> navlink
+//Switch ->Routes

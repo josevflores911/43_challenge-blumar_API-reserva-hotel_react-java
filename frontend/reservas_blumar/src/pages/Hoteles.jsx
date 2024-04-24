@@ -20,7 +20,7 @@ export default function Hoteles({ slides }) {
 
 
   return (
-    <div style={{ background: " rgba(7, 6, 7, 0.3)", margin: "10px", padding: "30px 20px", width:'600px', height:'400px'}}>
+    <div style={{ background: " gray", margin: "10px", padding: "30px 20px", width:'600px'}}>
       
     <div style={{display:"flex",flexDirection:'row',justifyContent:'space-around',margin:'10px',padding:'10px'}}>
         <button style={{padding:'10px',backgroundColor:'tomato'}} onClick={()=>restart()} type="button">Restart</button>

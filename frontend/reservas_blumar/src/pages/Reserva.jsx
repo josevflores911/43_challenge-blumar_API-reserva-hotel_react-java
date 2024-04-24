@@ -35,20 +35,24 @@ export default function Reserva() {
 
     return (
         <div  style={{
-            background: " rgba(7, 6, 7, 0.3)",
+            background: " gray",
             margin: "10px",
             padding: "30px 20px",
             width: "600px",
-            height: "400px",
-          }}>
+           
+      }}>
+        <div>
+
         <label htmlFor="cpfInput">CPF:</label>
         <input
           type="text"
           id="cpfInput"
           value={cpf}
           onChange={handleCPFChange}
-          placeholder="Digite o CPF..."
+            placeholder="Digite o CPF..."
+            className="m-3"
         />
+        </div>
         <button onClick={fetchClientDetails}>Buscar Reservas do Cliente</button>
   
         {error && <p>{error}</p>}
