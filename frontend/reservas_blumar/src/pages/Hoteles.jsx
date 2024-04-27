@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../components/Button";
 //import ima from '../images/pirat.png'
 
 
@@ -20,12 +21,14 @@ export default function Hoteles({ slides }) {
 
 
   return (
-    <div style={{ background: " gray", margin: "10px", padding: "30px 20px", width:'600px'}}>
+    <div className="m-[10px] px-[20px] py-[30px]" >
       
-    <div style={{display:"flex",flexDirection:'row',justifyContent:'space-around',margin:'10px',padding:'10px'}}>
-        <button style={{padding:'10px',backgroundColor:'tomato'}} onClick={()=>restart()} type="button">Restart</button>
-        <button style={{padding:'10px',backgroundColor:'tomato'}} disabled={index===slides.length-1} type="button" onClick={()=>next()}>Next</button>
-        <button style={{padding:'10px',backgroundColor:'tomato'}}  disabled={index===0} type="button" onClick={()=>previous()}>Previous</button>
+      <div className="flex flex-row justify-around m-4 p-4">
+        <Button type="button" onClick={()=>restart()}>Restart</Button>
+        <Button type="button" disabled={index === slides.length - 1} onClick={() => next()}>Next</Button>
+        <Button type="button" disabled={index===0} onClick={()=>previous()}>Previous</Button>
+        
+        
       </div>
       <div>
               <h1>{ slides[index].title}</h1>

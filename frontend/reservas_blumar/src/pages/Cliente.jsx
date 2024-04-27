@@ -36,10 +36,10 @@ export default function Cliente() {
   return (
     <div
       style={{
-        background: "gray",
+       
         margin: "10px",
         padding: "30px 20px",
-        width: "600px",
+       
        
       }}
     >

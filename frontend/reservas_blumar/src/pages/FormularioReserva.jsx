@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FormState } from "../entidades/formState";
 import { RoomType } from "../entidades/roomEnum";
+import Button from "../components/Button";
 
 
 const ReservationForm = () => {
@@ -31,18 +32,7 @@ const ReservationForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          background: "gray",
-          margin: "10px",
-          padding: "30px 20px",
-          alignItems: "flex-end",
-          width: "600px",
-         
-        }}
-      >
+      <div   className="flex flex-col m-10 p-8 items-start" >
         <label>
           CNPJ do Hotel:
           <input
@@ -163,7 +153,8 @@ const ReservationForm = () => {
           />
         </label>
 
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
+        
       </div>
     </form>
   );

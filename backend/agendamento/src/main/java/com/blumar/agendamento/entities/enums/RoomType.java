@@ -1,5 +1,7 @@
 package com.blumar.agendamento.entities.enums;
 
+import java.time.DayOfWeek;
+
 public enum RoomType {
     INDIVIDUAL("Individual", 100, 120),
     CASAL("Casal", 130, 150),

@@ -79,6 +79,7 @@ public class Reserva implements Serializable {
         }
     }
 
+    //move to a service and turn public
     private int calculoValorTotal(int noites, boolean temAcompanhante, int idadeAcompanhante) {
         int valorTotalReserva = 0; // Initialize the total reservation cost
 

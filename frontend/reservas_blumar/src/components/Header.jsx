@@ -11,7 +11,7 @@ const Header = () => {
   };
 
   return (
-    <div className="header" style={{display:"flex",justifyContent:'space-between',marginBottom:'20px'}}>
+    <div className='flex flex-row justify-between mx-10 my-1' >
       <Link to="/about" onClick={() => handleTabChange("reserva")}>
         <button onClick={(e) => e.preventDefault()}>Reserva</button>
       </Link>
