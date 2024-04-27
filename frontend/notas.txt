@@ -1,0 +1,46 @@
+src/
+|-- components/            <-- Folder for reusable UI components
+|   |-- Button/            <-- Button component and related files
+|   |   |-- Button.js      <-- Main Button component
+|   |   |-- Button.css     <-- Styles for Button component
+|   |   |-- index.js       <-- Exporting Button component
+|   |-- Input/             <-- Input component and related files
+|   |   |-- Input.js       <-- Main Input component
+|   |   |-- Input.css      <-- Styles for Input component
+|   |   |-- index.js       <-- Exporting Input component
+|   |-- Form/              <-- Form components and related files
+|   |   |-- Form.js        <-- Main Form component
+|   |   |-- FormField.js   <-- Form field component
+|   |   |-- Form.css       <-- Styles for Form components
+|   |   |-- index.js       <-- Exporting Form component
+|-- containers/            <-- Folder for container components
+|   |-- Dashboard/         <-- Dashboard-related container components
+|   |   |-- Dashboard.js   <-- Main Dashboard container
+|   |   |-- DashboardHeader.js   <-- Header for Dashboard
+|   |   |-- DashboardSidebar.js  <-- Sidebar for Dashboard
+|   |-- Profile/           <-- Profile-related container components
+|   |   |-- Profile.js     <-- Main Profile container
+|   |   |-- ProfileInfo.js <-- Component for displaying user info
+|   |   |-- ProfileSettings.js  <-- Component for user settings
+|-- pages/                 <-- Folder for top-level page components
+|   |-- Home.js            <-- Home page component
+|   |-- About.js           <-- About page component
+|   |-- Contact.js         <-- Contact page component
+|-- hooks/                 <-- Folder for custom hooks
+|   |-- useAuth.js         <-- Custom authentication hook
+|   |-- useForm.js         <-- Custom form handling hook
+|-- utils/                 <-- Folder for utility functions and helpers
+|   |-- api.js             <-- API utility functions
+|   |-- validation.js      <-- Form validation utility functions
+|-- assets/                <-- Folder for static assets (images, icons, etc.)
+|   |-- images/            <-- Images used in the application
+|   |-- icons/             <-- SVG icons and other graphical assets
+|-- App.js                 <-- Main App component
+|-- index.js               <-- Entry point of the React application
+|-- styles.css             <-- Global styles for the application
+|-- App.test.js            <-- Test file for App component
+|-- setupTests.js          <-- Configuration for Jest tests
+|-- README.md              <-- Project documentation
+|-- .gitignore             <-- Git ignore file
+|-- package.json           <-- NPM package configuration
+|-- yarn.lock              <-- Yarn lock file

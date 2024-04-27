@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ClientSingleCard from "../components/ClientSingleCard";
+import Button from "../components/Button";
 
 export default function Cliente() {
   const [cpf, setCPF] = useState("");
@@ -34,15 +35,12 @@ export default function Cliente() {
   };
 
   return (
-    <div
-      style={{
-       
-        margin: "10px",
-        padding: "30px 20px",
-       
-       
-      }}
-    >
+    <div className="m-[10px] px-[20px] py-[30px]"  >
+      <div className=" flex justify-between ">
+        <Button onClick={fetchClientDetails}>Buscar Cliente</Button>
+        <Button onClick={fetchAllClients}>Buscar Todos</Button>
+      </div>
+      
       <div>
         <label htmlFor="cpfInput">CPF:</label>
         <input
@@ -53,21 +51,15 @@ export default function Cliente() {
           placeholder="Digite o CPF..."
         />
       </div>
-      <div>
-        <button style={{ margin: "10px" }} onClick={fetchClientDetails}>
-          Buscar Cliente
-        </button>
-        <button style={{ margin: "10px" }} onClick={fetchAllClients}>
-          Buscar Todos
-        </button>
-      </div>
+      
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       <h2>Detalhes do Cliente</h2>
 
       <div className="flex flex-wrap">
-      {clients.length > 0 &&
+
+      { clients.length > 0 &&
         clients.map((client) => (
           <ClientSingleCard client={client} key={client.idClient} />
         ))}

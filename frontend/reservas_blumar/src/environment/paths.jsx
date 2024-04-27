@@ -1,6 +1,6 @@
 import Hoteles from "../pages/Hoteles";
-import Formulario from "../pages/FormularioReserva"
-import { SLIDES } from "../slides";
+import Formulario from "../containers/FormularioReserva"
+import { SLIDES } from "../db/slides";
 import Cliente from "../pages/Cliente";
 import Reserva from "../pages/Reserva";
 import Home from "../pages/Home";

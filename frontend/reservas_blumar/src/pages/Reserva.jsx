@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
+import Button from "../components/Button";
 
 
 
@@ -43,6 +44,7 @@ export default function Reserva() {
       }}>
         <div>
 
+          <h2>Buscar por CPF</h2>
         <label htmlFor="cpfInput">CPF:</label>
         <input
           type="text"
@@ -53,7 +55,8 @@ export default function Reserva() {
             className="m-3"
         />
         </div>
-        <button onClick={fetchClientDetails}>Buscar Reservas do Cliente</button>
+        <Button onClick={fetchClientDetails}>Buscar</Button>
+        
   
         {error && <p>{error}</p>}
   
