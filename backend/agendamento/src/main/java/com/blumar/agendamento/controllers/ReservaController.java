@@ -1,23 +1,27 @@
 package com.blumar.agendamento.controllers;
 
-import com.blumar.agendamento.entities.Cliente;
+
 import com.blumar.agendamento.entities.NotaFiscalDTO;
 import com.blumar.agendamento.entities.Reserva;
 import com.blumar.agendamento.entities.ReservaDTO;
+import com.blumar.agendamento.exceptions.ResourceNotFoundException;
+import com.blumar.agendamento.exceptions.ValidationException;
 import com.blumar.agendamento.services.ClienteService;
 import com.blumar.agendamento.services.ReservaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
-import java.util.Optional;
 
 
 @RestController
 @RequestMapping("/reservas")
+@Validated
 public class ReservaController {
 
     @Autowired
@@ -33,30 +37,21 @@ public class ReservaController {
         return ResponseEntity.ok(l);
     }
 
-    @PostMapping
-    @Transactional
-    public ResponseEntity<Optional<NotaFiscalDTO>> addReserve(@RequestBody final ReservaDTO reservaDTO) throws Exception {
+
+    //Cliente cliente=clienteService.findByCpf(cpf);
+   @GetMapping("/cliente/{cpf}")
+    public ResponseEntity<List<Reserva>> reservasByClienteCPF(@PathVariable String cpf) {
         try {
-            var notaFiscal= reservaService.createReserva(reservaDTO);
+            Long cpfValue = Long.parseLong(cpf); // Convert CPF string to Long
 
-            //return ResponseEntity.ok(notaFiscal);
-            return Optional.of(notaFiscal)
-                    .map(ResponseEntity::ok)
-                    .orElse(ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build());
-
+            List<Reserva> reservas = reservaService.findReservasByClientCPF(cpfValue);
+            return ResponseEntity.ok(reservas);
+        } catch (NumberFormatException e) {
+            return ResponseEntity.badRequest().body(List.of()); // Invalid CPF format
         } catch (Exception e) {
-            //e.printStackTrace();
-            System.out.println(e);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
-    @GetMapping("/cliente/{cpf}")
-    public ResponseEntity<List<Reserva>> reservasByClienteCPF(@PathVariable Long cpf) {
-        //Cliente cliente=clienteService.findByCpf(cpf);
-
-        List<Reserva> l =reservaService.findReservasByClientCPF(cpf);
-
-        return ResponseEntity.ok(l);
-    }
 }

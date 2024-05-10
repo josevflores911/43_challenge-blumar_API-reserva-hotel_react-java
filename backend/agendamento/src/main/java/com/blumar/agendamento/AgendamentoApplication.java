@@ -9,8 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.transaction.annotation.Transactional;
 
-
-
 @SpringBootApplication
 public class AgendamentoApplication implements CommandLineRunner {
 
@@ -26,6 +24,10 @@ public class AgendamentoApplication implements CommandLineRunner {
 	private ReservaService reservaService;
 
 	public static void main(String[] args) {
+
+
+
+
 
 		//SpringApplication.run(AgendamentoApplication.class, args);
 		SpringApplication app = new SpringApplication(AgendamentoApplication.class);

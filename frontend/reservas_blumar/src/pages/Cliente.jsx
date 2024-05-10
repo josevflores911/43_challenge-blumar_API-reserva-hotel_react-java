@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import ClientSingleCard from "../components/ClientSingleCard";
 import Button from "../components/Button";
+import { API_URL } from "../db/data";
+
 
 export default function Cliente() {
   const [cpf, setCPF] = useState("");
@@ -10,7 +12,7 @@ export default function Cliente() {
 
   const fetchClientDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/clientes/${cpf}`);
+      const response = await axios.get(`${API_URL}/clientes/${cpf}`);
       setClients([response.data]);
       setError(null);
     } catch (error) {
@@ -21,7 +23,7 @@ export default function Cliente() {
 
   const fetchAllClients = async () => {
     try {
-      const response = await axios.get(`http://localhost:8080/clientes/all`);
+      const response = await axios.get(`${API_URL}/clientes/all`);
       setClients(response.data);
       setError(null);
     } catch (error) {

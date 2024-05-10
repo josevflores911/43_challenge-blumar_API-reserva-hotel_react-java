@@ -14,16 +14,23 @@ import java.util.Optional;
 
 @Service
 public class ReservaService {
+
+    private final HotelRepository hotelRepository;
+    private final QuartoRepository quartoRepository;
+    private final ClienteRepository clienteRepository;
+    private final PedidoRepository pedidoRepository;
+    private final ReservaRepository reservaRepository;
+    private final CalculoDePrecios calculoDePrecios;
+
     @Autowired
-    private HotelRepository hotelRepository;
-    @Autowired
-    private QuartoRepository quartoRepository;
-    @Autowired
-    private ClienteRepository clienteRepository;
-    @Autowired
-    private PedidoRepository pedidoRepository;
-    @Autowired
-    private ReservaRepository reservaRepository;
+    public ReservaService(CalculoDePrecios calculoDePrecios, ReservaRepository reservaRepository, HotelRepository hotelRepository, QuartoRepository quartoRepository, ClienteRepository clienteRepository, PedidoRepository pedidoRepository, ReservaRepository reservaRepository1) {
+        this.calculoDePrecios = calculoDePrecios;
+        this.hotelRepository = hotelRepository;
+        this.quartoRepository = quartoRepository;
+        this.clienteRepository = clienteRepository;
+        this.pedidoRepository = pedidoRepository;
+        this.reservaRepository = reservaRepository1;
+    }
 
 
     @Transactional
@@ -33,7 +40,7 @@ public class ReservaService {
 
     public List<Reserva> findAll(){return   reservaRepository.findAll(); }
 
-    public Optional<NotaFiscalDTO> createReserva(ReservaDTO reservaDTO) throws Exception {
+    public NotaFiscalDTO createReserva(ReservaDTO reservaDTO) throws Exception {
 
         NotaFiscalDTO notafiscal;
         Optional<NotaFiscalDTO> nota;
@@ -56,26 +63,33 @@ public class ReservaService {
                 noites++;
             }
 
-            Reserva reserva=new Reserva(noites,quartoAleatorio,pedido,cliente);
+            Reserva reserva = new Reserva(noites, quartoAleatorio, pedido, cliente);
+
+            reserva.setValorTotalReserva(calculoDePrecios.calculoValorTotal(noites, cliente.isTemAcompanhante(), cliente.getIdadeAcompanhante()));
+            reserva.setQuarto(quartoAleatorio);
+            reserva.getQuarto().setDisponivel(false);
+
+            pedido.addReserva(reserva);
+            cliente.addReserva(reserva);
 
             clienteRepository.save(cliente);
             pedidoRepository.save(pedido);
             reservaRepository.save(reserva);
 
             notafiscal= new NotaFiscalDTO(cliente,hotel,quartoAleatorio,reserva);
-            nota =Optional.of(notafiscal);
+
+            return notafiscal;
         }else{
             throw new Exception("Quarto no disponivel ");
         }
 
-        return  nota;
-    }
-
-    public List<Reserva> findReservasByClient(Cliente cliente){
-        return reservaRepository.findByCliente(cliente);
     }
 
     public List<Reserva> findReservasByClientCPF(long cpf){
         return reservaRepository.findByClienteCpf(cpf);
+    }
+
+    public List<Reserva> findReservasByClient(Cliente cliente){
+        return reservaRepository.findByCliente(cliente);
     }
 }

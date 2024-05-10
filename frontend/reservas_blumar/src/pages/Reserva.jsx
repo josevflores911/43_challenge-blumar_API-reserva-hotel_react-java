@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import Button from "../components/Button";
+import { API_URL } from "../db/data";
 
 
 
@@ -11,7 +12,7 @@ export default function Reserva() {
   
     const fetchClientDetails = async () => {
       try {
-        const response = await axios.get( `http://localhost:8080/reservas/cliente/${cpf}`);
+        const response = await axios.get( `${API_URL}/reservas/cliente/${cpf}`);
         setReservas(response.data); 
         setError(null); 
       } catch (error) {

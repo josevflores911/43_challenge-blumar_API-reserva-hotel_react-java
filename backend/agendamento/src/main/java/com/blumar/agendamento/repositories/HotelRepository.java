@@ -7,5 +7,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface HotelRepository extends JpaRepository<Hotel, UUID> {
-    Optional<Hotel> findByCnpj(int cnpj);
+    Optional<Hotel> findByCnpj(Long cnpj);
 }

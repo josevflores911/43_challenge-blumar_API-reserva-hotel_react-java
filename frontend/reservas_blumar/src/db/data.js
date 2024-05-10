@@ -28,5 +28,7 @@ export const SLIDES= [
       "imag":"images/castle.png"
     }
 
-  ]
+]
+  
+export const API_URL= "http://localhost:8080";
   
