@@ -1,3 +1,4 @@
+vali,unit,excep,refact
 # 43_challenge-blumar_API-reserva-hotel_react-java
 # Desafio Back-end Java - Serviço de Check-in em Hotel
 
